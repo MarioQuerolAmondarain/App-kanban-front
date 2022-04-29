@@ -1,1 +1,11 @@
-<p>todolist works!</p>
+<mat-expansion-panel
+  (opened)="panelOpenState = true"
+  (closed)="panelOpenState = false"
+>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Añadir tarea
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <app-nueva-tarea></app-nueva-tarea>
+</mat-expansion-panel>

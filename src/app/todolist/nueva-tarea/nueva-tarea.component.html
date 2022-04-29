@@ -1,0 +1,19 @@
+<form [formGroup]="nuevaTareaForm" (submit)="crearTarea()">
+  <mat-form-field appearance="outline">
+    <mat-label>Titulo</mat-label>
+    <input matInput type="text" formControlName="titulo">
+    <mat-error>Campo obligatorio</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Descripción</mat-label>
+    <input matInput type="text" formControlName="descripcion">
+    <mat-error>Campo obligatorio</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Fecha límite</mat-label>
+    <input matInput type="date" formControlName="fechaLimite">
+    <mat-error>Campo obligatorio</mat-error>
+  </mat-form-field>
+  <br>
+  <button mat-raised-button color="primary" disabled="{{ nuevaTareaForm.invalid }}">Añadir</button>
+</form>

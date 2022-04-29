@@ -1,3 +1,4 @@
+import { NuevaTareaComponent } from './todolist/nueva-tarea/nueva-tarea.component';
 import { CalendarComponent } from './todolist/calendar/calendar.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';

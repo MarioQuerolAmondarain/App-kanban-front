@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todolist.component.scss']
 })
 export class TodolistComponent implements OnInit {
+  panelOpenState=false;
 
   constructor() { }
 
