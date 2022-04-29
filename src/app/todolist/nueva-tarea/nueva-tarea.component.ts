@@ -1,3 +1,4 @@
+import { EstadoTareas } from './../models/estadoTareas.enum';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -8,6 +9,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class NuevaTareaComponent implements OnInit {
   nuevaTareaForm!: FormGroup;
+  toDo = EstadoTareas.TODO;
+  doing = EstadoTareas.DOING;
+  done = EstadoTareas.DONE;
   constructor() { }
 
   ngOnInit(): void {
@@ -15,6 +19,7 @@ export class NuevaTareaComponent implements OnInit {
       titulo: new FormControl('', Validators.required),
       descripcion: new FormControl('', Validators.required),
       fechaLimite: new FormControl('', Validators.required),
+      estado: new FormControl('', Validators.required)
     });
   }
 

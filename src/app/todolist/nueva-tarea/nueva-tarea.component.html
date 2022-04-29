@@ -14,6 +14,15 @@
     <input matInput type="date" formControlName="fechaLimite">
     <mat-error>Campo obligatorio</mat-error>
   </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Estado</mat-label>
+    <mat-select formControlName="estado">
+     <mat-option value="{{ toDo }}">ToDo</mat-option>
+     <mat-option value="{{ doing }}">Doing</mat-option>
+     <mat-option value="{{ done }}">Done</mat-option>
+    </mat-select>
+    <mat-error>Campo obligatorio</mat-error>
+  </mat-form-field>
   <br>
   <button mat-raised-button color="primary" disabled="{{ nuevaTareaForm.invalid }}">Añadir</button>
 </form>

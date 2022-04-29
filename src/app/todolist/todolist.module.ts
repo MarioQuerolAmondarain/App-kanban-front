@@ -10,7 +10,7 @@ import { MatTableModule } from '@angular/material/table';
 import { CalendarComponent } from './calendar/calendar.component';
 import { NuevaTareaComponent } from './nueva-tarea/nueva-tarea.component';
 import { TodolistComponent } from './todolist/todolist.component';
-
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { TodolistComponent } from './todolist/todolist.component';
     MatTableModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatSelectModule
   ],
   exports: [
     TodolistComponent
