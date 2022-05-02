@@ -1,5 +1,5 @@
 export enum EstadoTareas{
-  TODO,
-  DOING,
-  DONE
+  TODO = "todo",
+  DOING = "doing",
+  DONE = "done"
 }

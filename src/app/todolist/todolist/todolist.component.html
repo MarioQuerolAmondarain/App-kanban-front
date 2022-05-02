@@ -1,9 +1,14 @@
-<mat-expansion-panel
->
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      Añadir tarea
-    </mat-panel-title>
-  </mat-expansion-panel-header>
-  <app-nueva-tarea></app-nueva-tarea>
-</mat-expansion-panel>
+<div class="container">
+  <mat-expansion-panel  [expanded]="true"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Añadir tarea
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <app-nueva-tarea></app-nueva-tarea>
+  </mat-expansion-panel>
+  <br>
+  <br>
+  <app-tableros></app-tableros>
+</div>

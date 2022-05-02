@@ -1,0 +1,6 @@
+<div class="container">
+  <span class="titulo">{{ getTitulo() }}</span>
+  <div *ngFor="let tarea of todolistService.getTareasPorEstado(this.estadoTareas)">
+    <app-tarea-card [tarea]="tarea"></app-tarea-card>
+  </div>
+</div>
