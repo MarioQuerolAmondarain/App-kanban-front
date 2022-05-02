@@ -20,6 +20,7 @@ import { TareaCardComponent } from './tarea-card/tarea-card.component';
 import { TodolistComponent } from './todolist/todolist.component';
 import { TareaDetallesComponent } from './tarea-detalles/tarea-detalles.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatDividerModule,
     MatSnackBarModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatNativeDateModule
   ],
   exports: [
     TodolistComponent
