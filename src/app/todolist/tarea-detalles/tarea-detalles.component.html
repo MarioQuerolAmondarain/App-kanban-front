@@ -1,5 +1,6 @@
-<span>{{ tarea.titulo }}</span>
-<br>
-<span>{{ tarea.descripcion }}</span>
-<br>
-<span>{{ tarea.estado }}</span>
+<h1 mat-dialog-title>{{ tarea.titulo }}</h1>
+<div mat-dialog-content>{{ tarea.descripcion }}</div>
+<div mat-dialog-content>{{ tarea.estado }}</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>
