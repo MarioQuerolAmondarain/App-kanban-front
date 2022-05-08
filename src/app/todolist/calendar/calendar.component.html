@@ -1,5 +1,22 @@
-<h1>Calendario</h1>
-<mat-card class="demo-inline-calendar-card" style="width: 300px;">
-  <mat-calendar [(selected)]="selected"></mat-calendar>
-</mat-card>
-<p>Selected date: {{selected}}</p>
+<div class="container">
+  <mat-card class="demo-inline-calendar-card" style="width: 300px;">
+    <mat-calendar [(selected)]="selected"></mat-calendar>
+  </mat-card>
+  <div class="columnaTareas">
+    <span class="titulo">Tareas el {{ getFecha() }}</span>
+    <div class="tareaContainer">
+      <span class="subtitulo">Todo</span>
+      <div *ngFor="let tarea of getTareasToDo()">
+        <app-tarea-card [tarea]="tarea"></app-tarea-card>
+      </div>
+      <span class="subtitulo">Doing</span>
+      <div *ngFor="let tarea of getTareasDoing()">
+        <app-tarea-card [tarea]="tarea"></app-tarea-card>
+      </div>
+      <span class="subtitulo">Done</span>
+      <div *ngFor="let tarea of getTareasDone()">
+        <app-tarea-card [tarea]="tarea"></app-tarea-card>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,7 @@ import { PrioridadTareas } from './models/PrioridadTareas.enum';
 import { EstadoTareas } from './models/estadoTareas.enum';
 import { Tarea } from './models/tarea.model';
 import { Injectable } from '@angular/core';
+import { formatDate } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -27,4 +28,15 @@ export class TodolistService {
     });
   }
 
+  getTareasPorFecha(date: Date){
+    return this.tareas.filter((tarea) => {
+      return tarea.fechaLimite === formatDate(date, 'dd-MM-yyyy', 'en');
+    });
+  }
+
+  getTareasPorFechaYEstado(date: Date, estado: EstadoTareas){
+    return this.tareas.filter((tarea) => {
+      return tarea.fechaLimite === formatDate(date, 'dd-MM-yyyy', 'en') && tarea.estado === estado;;
+    });
+  }
 }

@@ -1,0 +1,28 @@
+.titulo{
+  color: #4A925E;
+  font-size: xx-large;
+  font-weight: bolder;
+}
+.subtitulo{
+  color: #43E5A8;
+  font-size: large;
+  font-weight: bolder;
+}
+.tareaContainer{
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+.container{
+  margin: 15px;
+  display: flex;
+  flex-direction: row;
+}
+.space{
+  width: 100px;
+}
+.columnaTareas{
+  margin-top: 10px;
+  margin-left: 15px;
+}
