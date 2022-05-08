@@ -21,6 +21,8 @@ import { TodolistComponent } from './todolist/todolist.component';
 import { TareaDetallesComponent } from './tarea-detalles/tarea-detalles.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatNativeDateModule } from '@angular/material/core';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { TajetaPrioridadComponent } from './tarea-detalles/tajeta-prioridad/tajeta-prioridad.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     TablerosComponent,
     TableroComponent,
     TareaCardComponent,
-    TareaDetallesComponent
+    TareaDetallesComponent,
+    TajetaPrioridadComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +51,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSnackBarModule,
     MatIconModule,
     MatDialogModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    DragDropModule,
+    MatDividerModule
   ],
   exports: [
     TodolistComponent

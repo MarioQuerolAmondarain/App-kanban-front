@@ -17,7 +17,8 @@ export class TareaCardComponent implements OnInit {
 
   verTarea(){
     this.dialog.open(TareaDetallesComponent, {
-      width: "350px",
+      width: "400px",
+      height: "250px",
       data: {
         tarea: this.tarea
       }

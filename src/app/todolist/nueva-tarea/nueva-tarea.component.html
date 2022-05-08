@@ -17,12 +17,22 @@
   <mat-form-field appearance="outline">
     <mat-label>Estado</mat-label>
     <mat-select formControlName="estado">
-     <mat-option value="{{ toDo }}">ToDo</mat-option>
-     <mat-option value="{{ doing }}">Doing</mat-option>
-     <mat-option value="{{ done }}">Done</mat-option>
+     <mat-option value="{{ estadosTarea.toDo }}">ToDo</mat-option>
+     <mat-option value="{{ estadosTarea.doing }}">Doing</mat-option>
+     <mat-option value="{{ estadosTarea.done }}">Done</mat-option>
     </mat-select>
     <mat-error>Campo obligatorio</mat-error>
   </mat-form-field>
-  <br>
-  <button mat-raised-button color="primary" disabled="{{ nuevaTareaForm.invalid }}">Añadir</button>
+  <mat-form-field appearance="outline">
+    <mat-label>Prioridad</mat-label>
+    <mat-select formControlName="prioridad">
+     <mat-option value="{{ prioridadesTarea.someday }}">Someday</mat-option>
+     <mat-option value="{{ prioridadesTarea.low }}">Low</mat-option>
+     <mat-option value="{{ prioridadesTarea.medium }}">Medium</mat-option>
+     <mat-option value="{{ prioridadesTarea.high}}">High</mat-option>
+     <mat-option value="{{ prioridadesTarea.veryhigh}}">Very high</mat-option>
+    </mat-select>
+    <mat-error>Campo obligatorio</mat-error>
+  </mat-form-field>
 </form>
+<button mat-raised-button color="primary" disabled="{{ nuevaTareaForm.invalid }}" (click)="crearTarea()">Añadir</button>

@@ -1,7 +1,16 @@
-<h1 mat-dialog-title>{{ tarea.titulo }}</h1>
-<div mat-dialog-content>{{ tarea.descripcion }}</div>
-<div mat-dialog-content>{{ tarea.fechaLimite }}</div>
-<div mat-dialog-content>{{ tarea.estado }}</div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
+<div class="container">
+  <span mat-dialog-tittle class="titulo">{{tarea.titulo}}</span>
+  <mat-divider></mat-divider>
+  <div class="space"></div>
+  <div class="detalles">
+    <span class="categoria">Estado:</span><span class="categoriaValor"> {{ tarea.estado }}</span>
+    <span class="categoria">Fecha limite:</span><span class="categoriaValor"> {{ tarea.fechaLimite }}</span>
+    <span class="categoria">Prioridad:</span><app-tajeta-prioridad [prioridad]="tarea.prioridad"></app-tajeta-prioridad>
+  </div>
+  <div class="space"></div>
+  <span class="descripcion">{{ tarea.descripcion }}</span>
+  <div mat-dialog-actions class="botones">
+    <!-- <button mat-raised-button (click)="editarTarea()">Actualizar</button> -->
+    <button mat-flat-button [mat-dialog-close]="true" color="warn">Cerrar</button>
+  </div>
 </div>
