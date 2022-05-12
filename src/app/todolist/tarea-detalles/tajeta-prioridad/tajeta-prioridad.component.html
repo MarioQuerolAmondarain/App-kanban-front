@@ -1,15 +1,18 @@
-<div *ngIf="prioridad === someday" class="someday">
-  <span>Some day</span>
+<div *ngIf="prioridad">
+  <div *ngIf="prioridad === someday" class="someday">
+    <span>Some day</span>
+  </div>
+  <div *ngIf="prioridad === low" class="low">
+    <span>Low</span>
+  </div>
+  <div *ngIf="prioridad === medium" class="medium">
+    <span>Medium</span>
+  </div>
+  <div *ngIf="prioridad === high" class="high">
+    <span>High</span>
+  </div>
+  <div *ngIf="prioridad === veryhigh" class="veryhigh">
+    <span>Very high</span>
+  </div>
 </div>
-<div *ngIf="prioridad === low" class="low">
-  <span>Low</span>
-</div>
-<div *ngIf="prioridad === medium" class="medium">
-  <span>Medium</span>
-</div>
-<div *ngIf="prioridad === high" class="high">
-  <span>High</span>
-</div>
-<div *ngIf="prioridad === veryhigh" class="veryhigh">
-  <span>Very high</span>
-</div>
+

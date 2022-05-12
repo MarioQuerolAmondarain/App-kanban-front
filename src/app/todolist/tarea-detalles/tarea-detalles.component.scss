@@ -1,4 +1,4 @@
-*{
+span, h1{
   font-family: 'Nunito', sans-serif;
 }
 .container{
@@ -19,8 +19,9 @@
   font-weight: bolder;
 }
 .detalles{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .descripcion{
   width: 100%;
@@ -31,4 +32,12 @@
 }
 .space{
   height: 50px;
+}
+.icon{
+  font-size: medium;
+}
+.editFecha{
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
 }

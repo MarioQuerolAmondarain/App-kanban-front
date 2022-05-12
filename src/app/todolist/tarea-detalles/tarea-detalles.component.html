@@ -3,9 +3,36 @@
   <mat-divider></mat-divider>
   <div class="space"></div>
   <div class="detalles">
-    <span class="categoria">Estado:</span><span class="categoriaValor"> {{ tarea.estado }}</span>
-    <span class="categoria">Fecha limite:</span><span class="categoriaValor"> {{ tarea.fechaLimite }}</span>
-    <span class="categoria">Prioridad:</span><app-tajeta-prioridad [prioridad]="tarea.prioridad"></app-tajeta-prioridad>
+    <span class="categoria">Estado:</span>
+    <span class="categoriaValor"> {{ tarea.estado }}</span>
+    <a [matMenuTriggerFor]="editEstado"><mat-icon class="icon">edit</mat-icon></a>
+    <mat-menu #editEstado="matMenu" xPosition="before">
+      <button mat-menu-item *ngIf="tarea.estado != estadosTarea.toDo" (click)="actualizarPrioridad(estadosTarea.toDo)">ToDo</button>
+      <button mat-menu-item *ngIf="tarea.estado != estadosTarea.doing" (click)="actualizarPrioridad(estadosTarea.doing)">Doing</button>
+      <button mat-menu-item *ngIf="tarea.estado != estadosTarea.done" (click)="actualizarPrioridad(estadosTarea.done)">Done</button>
+    </mat-menu>
+  </div>
+  <div class="detalles">
+    <span class="categoria">Fecha limite:</span>
+    <span class="categoriaValor"> {{ tarea.fechaLimite }}</span>
+    <a [matMenuTriggerFor]="editFecha"><mat-icon class="icon">edit</mat-icon></a>
+    <mat-menu #editFecha="matMenu" xPosition="before">
+      <div class="editFecha">
+        <form class="example-form" (submit)="actualizarFecha()" (click)="$event.stopPropagation()" [formGroup]="editarFechaForm">
+          <mat-form-field appearance="outline">
+            <mat-label>Fecha límite</mat-label>
+            <input matInput type="date" formControlName="fechaLimite">
+            <mat-error>Campo obligatorio</mat-error>
+          </mat-form-field>
+        </form>
+        <button mat-button (click)="$event.preventDefault(); actualizarFecha()">Editar</button>
+      </div>
+    </mat-menu>
+  </div>
+  <div class="detalles">
+    <span class="categoria">Prioridad:</span>
+    <app-tajeta-prioridad [prioridad]="tarea.prioridad"></app-tajeta-prioridad>
+    <a><mat-icon class="icon">edit</mat-icon></a>
   </div>
   <div class="space"></div>
   <span class="descripcion">{{ tarea.descripcion }}</span>
