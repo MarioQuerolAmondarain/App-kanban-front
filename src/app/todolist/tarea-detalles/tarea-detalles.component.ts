@@ -40,11 +40,20 @@ export class TareaDetallesComponent implements OnInit {
 
   ngOnInit(): void {
     this.tarea = this.data.tarea;
+
     this.loadFormValues();
   }
 
   editarTarea() {
-
+    let tareaActualizada = {
+      id: this.tarea.id,
+      titulo: this.tarea.titulo,
+      descripcion: this.editarTareaForm.get('descripcion')?.value,
+      fechaLimite:this.editarTareaForm.get('fechaLimite')?.value,
+      estado: this.editarTareaForm.get('estado')?.value,
+      prioridad: this.editarTareaForm.get('prioridad')?.value,
+    } as Tarea;
+    this.todolistService.updateTarea(tareaActualizada);
     this.snackBar.open('¡Tarea modificada!', '', {
       duration: 2000,
     });
