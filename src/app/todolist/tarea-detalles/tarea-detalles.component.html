@@ -11,11 +11,9 @@
     <mat-error>Campo obligatorio</mat-error>
   </mat-form-field>
   <mat-form-field class="full-width" appearance="legacy">
-      <mat-label>Fecha limite</mat-label>
-      <input matInput [matDatepicker]="picker">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+    <input matInput type="date" formControlName="fechaLimite"  [value]="getFecha()">
+    <mat-error>Campo obligatorio</mat-error>
+  </mat-form-field>
   <mat-form-field class="full-width" appearance="legacy">
     <mat-label>Prioridad</mat-label>
     <mat-select formControlName="prioridad">

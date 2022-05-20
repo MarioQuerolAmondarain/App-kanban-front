@@ -10,7 +10,7 @@ import { formatDate } from '@angular/common';
 })
 export class TodolistService {
   tareas: Tarea[] = [
-    new Tarea("Hacer calendario", "Diseñar estructura para el calendario", new Date(), EstadoTareas.TODO, PrioridadTareas.MEDIUM)
+    // new Tarea("Hacer calendario", "Diseñar estructura para el calendario", new Date(), EstadoTareas.TODO, PrioridadTareas.MEDIUM)
   ];
 
   constructor() { }
@@ -43,7 +43,7 @@ export class TodolistService {
 
   getTareasPorFechaYEstado(date: Date, estado: EstadoTareas){
     return this.tareas.filter((tarea) => {
-      return tarea.fechaLimite === date && tarea.estado === estado;;
+      return formatDate(tarea.fechaLimite, 'dd-MM-yyyy', 'en') === formatDate(date, 'dd-MM-yyyy', 'en')  && tarea.estado === estado;;
     });
   }
 }
