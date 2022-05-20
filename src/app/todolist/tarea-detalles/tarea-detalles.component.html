@@ -1,43 +1,36 @@
-<div class="container">
-  <span mat-dialog-tittle class="titulo">{{tarea.titulo}}</span>
-  <mat-divider></mat-divider>
-  <div class="space"></div>
-  <div class="detalles">
-    <span class="categoria">Estado:</span>
-    <span class="categoriaValor"> {{ tarea.estado }}</span>
-    <a [matMenuTriggerFor]="editEstado"><mat-icon class="icon">edit</mat-icon></a>
-    <mat-menu #editEstado="matMenu" xPosition="before">
-      <button mat-menu-item *ngIf="tarea.estado != estadosTarea.toDo" (click)="actualizarPrioridad(estadosTarea.toDo)">ToDo</button>
-      <button mat-menu-item *ngIf="tarea.estado != estadosTarea.doing" (click)="actualizarPrioridad(estadosTarea.doing)">Doing</button>
-      <button mat-menu-item *ngIf="tarea.estado != estadosTarea.done" (click)="actualizarPrioridad(estadosTarea.done)">Done</button>
-    </mat-menu>
-  </div>
-  <div class="detalles">
-    <span class="categoria">Fecha limite:</span>
-    <span class="categoriaValor"> {{ tarea.fechaLimite }}</span>
-    <a [matMenuTriggerFor]="editFecha"><mat-icon class="icon">edit</mat-icon></a>
-    <mat-menu #editFecha="matMenu" xPosition="before">
-      <div class="editFecha">
-        <form class="example-form" (submit)="actualizarFecha()" (click)="$event.stopPropagation()" [formGroup]="editarFechaForm">
-          <mat-form-field appearance="outline">
-            <mat-label>Fecha límite</mat-label>
-            <input matInput type="date" formControlName="fechaLimite">
-            <mat-error>Campo obligatorio</mat-error>
-          </mat-form-field>
-        </form>
-        <button mat-button (click)="$event.preventDefault(); actualizarFecha()">Editar</button>
-      </div>
-    </mat-menu>
-  </div>
-  <div class="detalles">
-    <span class="categoria">Prioridad:</span>
-    <app-tajeta-prioridad [prioridad]="tarea.prioridad"></app-tajeta-prioridad>
-    <a><mat-icon class="icon">edit</mat-icon></a>
-  </div>
-  <div class="space"></div>
-  <span class="descripcion">{{ tarea.descripcion }}</span>
-  <div mat-dialog-actions class="botones">
-    <!-- <button mat-raised-button (click)="editarTarea()">Actualizar</button> -->
-    <button mat-flat-button [mat-dialog-close]="true" color="warn">Cerrar</button>
-  </div>
-</div>
+
+<h2 mat-dialog-title>{{tarea.titulo}}</h2>
+<form action="editarTarea()" [formGroup]="editarTareaForm">
+  <mat-form-field class="full-width" appearance="legacy">
+    <mat-label>Estado</mat-label>
+    <mat-select formControlName="estado">
+     <mat-option value="{{ estadosTarea.toDo }}">ToDo</mat-option>
+     <mat-option value="{{ estadosTarea.doing }}">Doing</mat-option>
+     <mat-option value="{{ estadosTarea.done }}">Done</mat-option>
+    </mat-select>
+    <mat-error>Campo obligatorio</mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width" appearance="legacy">
+      <mat-label>Fecha limite</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  <mat-form-field class="full-width" appearance="legacy">
+    <mat-label>Prioridad</mat-label>
+    <mat-select formControlName="prioridad">
+      <mat-option *ngFor="let prioridad of prioridadesTarea" [value]="prioridadesTarea">
+        {{ obtenerPrioridadNombre(prioridad)}}
+      </mat-option>
+    </mat-select>
+    <mat-error>Campo obligatorio</mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width" appearance="legacy">
+    <mat-label>Descripción</mat-label>
+    <textarea matInput placeholder="Descripción..." formControlName="descripcion"></textarea>
+  </mat-form-field>
+</form>
+<mat-dialog-actions align="end">
+  <button mat-raised-button [mat-dialog-close]="true" class="botonGuardar" (click)="editarTarea()" [disabled]="editarTareaForm.invalid">Save</button>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
