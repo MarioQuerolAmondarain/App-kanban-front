@@ -78,15 +78,15 @@ export class TareaDetallesComponent implements OnInit {
 
   obtenerPrioridadNombre(prioridad: PrioridadTareas): string{
     if(prioridad === PrioridadTareas.SOMEDAY){
-      return "Someday"
+      return PrioridadTareas.SOMEDAY + " - Someday";
     } else if(prioridad === PrioridadTareas.LOW){
-      return "Low"
+      return PrioridadTareas.LOW + " - Low";
     } else if(prioridad === PrioridadTareas.MEDIUM){
-      return "Medium"
+      return PrioridadTareas.MEDIUM + " - Medium";
     } else if(prioridad === PrioridadTareas.HIGH){
-      return "High"
+      return PrioridadTareas.HIGH + " - High";
     }
-    return "VeryHigh";
+    return PrioridadTareas.VERYHIGH + " - VeryHigh";
   }
 
   getFecha(): Date{

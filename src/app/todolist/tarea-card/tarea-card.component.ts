@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Tarea } from '../models/tarea.model';
 import { Directionality } from '@angular/cdk/bidi';
+import { PrioridadTareas } from '../models/PrioridadTareas.enum';
 
 @Component({
   selector: 'app-tarea-card',
@@ -26,5 +27,18 @@ export class TareaCardComponent implements OnInit {
         },
       }
     );
+  }
+  getPrioridadTexto(){
+    let prioridad = this.tarea.prioridad
+    if(prioridad === PrioridadTareas.SOMEDAY){
+      return "Someday"
+    } else if(prioridad === PrioridadTareas.LOW){
+      return "Low"
+    } else if(prioridad === PrioridadTareas.MEDIUM){
+      return "Medium"
+    } else if(prioridad === PrioridadTareas.HIGH){
+      return "High"
+    }
+    return "VeryHigh";
   }
 }

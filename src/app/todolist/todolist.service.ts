@@ -10,7 +10,7 @@ import { formatDate } from '@angular/common';
 })
 export class TodolistService {
   tareas: Tarea[] = [
-    // new Tarea("Hacer calendario", "Diseñar estructura para el calendario", new Date(), EstadoTareas.TODO, PrioridadTareas.MEDIUM)
+    new Tarea("Hacer calendario", "Diseñar estructura para el calendario", new Date(), EstadoTareas.TODO, PrioridadTareas.MEDIUM)
   ];
 
   constructor() { }

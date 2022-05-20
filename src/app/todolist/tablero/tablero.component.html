@@ -1,6 +1,10 @@
 <div class="container">
   <span class="titulo">{{ getTitulo() }}</span>
-  <div *ngFor="let tarea of todolistService.getTareasPorEstado(this.estadoTareas)">
+  <button mat-icon-button (click)="ascendente=!ascendente">
+    <mat-icon *ngIf="ascendente">keyboard_arrow_down</mat-icon>
+    <mat-icon *ngIf="!ascendente">keyboard_arrow_up</mat-icon>
+  </button>
+  <div *ngFor="let tarea of filtrarTareas()">
     <app-tarea-card [tarea]="tarea"></app-tarea-card>
   </div>
 </div>
