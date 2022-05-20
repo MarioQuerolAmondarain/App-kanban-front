@@ -19,7 +19,7 @@
   <mat-form-field class="full-width" appearance="legacy">
     <mat-label>Prioridad</mat-label>
     <mat-select formControlName="prioridad">
-      <mat-option *ngFor="let prioridad of prioridadesTarea" [value]="prioridadesTarea">
+      <mat-option *ngFor="let prioridad of prioridadesTarea" [value]="prioridad">
         {{ obtenerPrioridadNombre(prioridad)}}
       </mat-option>
     </mat-select>

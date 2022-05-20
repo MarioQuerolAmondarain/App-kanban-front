@@ -45,7 +45,6 @@ export class TareaDetallesComponent implements OnInit {
 
   editarTarea() {
 
-
     this.snackBar.open('¡Tarea modificada!', '', {
       duration: 2000,
     });
@@ -80,4 +79,5 @@ export class TareaDetallesComponent implements OnInit {
     }
     return "VeryHigh";
   }
+
 }
