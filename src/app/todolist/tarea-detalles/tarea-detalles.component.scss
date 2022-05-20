@@ -1,34 +1,9 @@
-*{
-  font-family: 'Nunito', sans-serif;
+.botonGuardar{
+  background-color: #99E5C7;
 }
-.container{
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-}
-.botones{
+form{
   width: 100%;
-  display: flex;
-  justify-content: flex-end
 }
-.titulo{
-  color: #4A925E;
-  font-size: x-large;
-  font-weight: bolder;
-}
-.detalles{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.descripcion{
+.full-width {
   width: 100%;
-  height: 100%;
-  border: 1px solid rgba($color: #000000, $alpha: 0.4);
-  border-radius: 10px;
-  padding: 5px;
-}
-.space{
-  height: 50px;
 }

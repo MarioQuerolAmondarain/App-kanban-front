@@ -1,16 +1,34 @@
-<div class="container">
-  <span mat-dialog-tittle class="titulo">{{tarea.titulo}}</span>
-  <mat-divider></mat-divider>
-  <div class="space"></div>
-  <div class="detalles">
-    <span class="categoria">Estado:</span><span class="categoriaValor"> {{ tarea.estado }}</span>
-    <span class="categoria">Fecha limite:</span><span class="categoriaValor"> {{ tarea.fechaLimite }}</span>
-    <span class="categoria">Prioridad:</span><app-tajeta-prioridad [prioridad]="tarea.prioridad"></app-tajeta-prioridad>
-  </div>
-  <div class="space"></div>
-  <span class="descripcion">{{ tarea.descripcion }}</span>
-  <div mat-dialog-actions class="botones">
-    <!-- <button mat-raised-button (click)="editarTarea()">Actualizar</button> -->
-    <button mat-flat-button [mat-dialog-close]="true" color="warn">Cerrar</button>
-  </div>
-</div>
+
+<h2 mat-dialog-title>{{tarea.titulo}}</h2>
+<form action="editarTarea()" [formGroup]="editarTareaForm">
+  <mat-form-field class="full-width" appearance="legacy">
+    <mat-label>Estado</mat-label>
+    <mat-select formControlName="estado">
+     <mat-option value="{{ estadosTarea.toDo }}">ToDo</mat-option>
+     <mat-option value="{{ estadosTarea.doing }}">Doing</mat-option>
+     <mat-option value="{{ estadosTarea.done }}">Done</mat-option>
+    </mat-select>
+    <mat-error>Campo obligatorio</mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width" appearance="legacy">
+    <input matInput type="date" formControlName="fechaLimite"  [value]="getFecha()">
+    <mat-error>Campo obligatorio</mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width" appearance="legacy">
+    <mat-label>Prioridad</mat-label>
+    <mat-select formControlName="prioridad">
+      <mat-option *ngFor="let prioridad of prioridadesTarea" [value]="prioridad">
+        {{ obtenerPrioridadNombre(prioridad)}}
+      </mat-option>
+    </mat-select>
+    <mat-error>Campo obligatorio</mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width" appearance="legacy">
+    <mat-label>Descripción</mat-label>
+    <textarea matInput placeholder="Descripción..." formControlName="descripcion"></textarea>
+  </mat-form-field>
+</form>
+<mat-dialog-actions align="end">
+  <button mat-raised-button [mat-dialog-close]="true" class="botonGuardar" (click)="editarTarea()" [disabled]="editarTareaForm.invalid">Save</button>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

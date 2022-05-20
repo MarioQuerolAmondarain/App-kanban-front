@@ -7,7 +7,7 @@ export class Tarea{
   id: number;
   titulo: string;
   descripcion: string;
-  fechaLimite: string;
+  fechaLimite: Date;
   estado: EstadoTareas;
   prioridad: PrioridadTareas;
 
@@ -16,7 +16,8 @@ export class Tarea{
     this.id = Tarea.contadorTareas;
     this.titulo = titulo;
     this.descripcion = descripcion;
-    this.fechaLimite = this.formatoFecha(fechaLimite);
+    this.fechaLimite = fechaLimite;
+    // this.fechaLimite = this.formatoFecha(fechaLimite);
     this.estado = estado;
     this.prioridad = prioridad;
   }

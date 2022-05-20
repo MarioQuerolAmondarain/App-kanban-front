@@ -18,13 +18,13 @@ export class NuevaTareaComponent implements OnInit {
     doing: EstadoTareas.DOING,
     done: EstadoTareas.DONE
   };
-  prioridadesTarea = {
-    someday: PrioridadTareas.SOMEDAY,
-    low: PrioridadTareas.LOW,
-    medium: PrioridadTareas.MEDIUM,
-    high: PrioridadTareas.HIGH,
-    veryhigh: PrioridadTareas.VERYHIGH
-  };
+  prioridadesTarea = [
+    PrioridadTareas.SOMEDAY,
+    PrioridadTareas.LOW,
+    PrioridadTareas.MEDIUM,
+    PrioridadTareas.HIGH,
+    PrioridadTareas.VERYHIGH,
+  ];
 
   constructor(private todolistService: TodolistService, private snackBar: MatSnackBar) {}
 
@@ -53,5 +53,18 @@ export class NuevaTareaComponent implements OnInit {
       estado: new FormControl('', Validators.required),
       prioridad: new FormControl('', Validators.required),
     });
+  }
+
+  obtenerPrioridadNombre(prioridad: PrioridadTareas): string{
+    if(prioridad === PrioridadTareas.SOMEDAY){
+      return "Someday"
+    } else if(prioridad === PrioridadTareas.LOW){
+      return "Low"
+    } else if(prioridad === PrioridadTareas.MEDIUM){
+      return "Medium"
+    } else if(prioridad === PrioridadTareas.HIGH){
+      return "High"
+    }
+    return "VeryHigh";
   }
 }
