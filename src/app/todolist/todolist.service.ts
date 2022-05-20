@@ -37,13 +37,13 @@ export class TodolistService {
 
   getTareasPorFecha(date: Date){
     return this.tareas.filter((tarea) => {
-      return tarea.fechaLimite === formatDate(date, 'dd-MM-yyyy', 'en');
+      return tarea.fechaLimite === date;
     });
   }
 
   getTareasPorFechaYEstado(date: Date, estado: EstadoTareas){
     return this.tareas.filter((tarea) => {
-      return tarea.fechaLimite === formatDate(date, 'dd-MM-yyyy', 'en') && tarea.estado === estado;;
+      return tarea.fechaLimite === date && tarea.estado === estado;;
     });
   }
 }

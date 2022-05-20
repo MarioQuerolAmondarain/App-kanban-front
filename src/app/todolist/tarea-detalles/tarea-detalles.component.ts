@@ -40,7 +40,7 @@ export class TareaDetallesComponent implements OnInit {
 
   ngOnInit(): void {
     this.tarea = this.data.tarea;
-
+    console.log(this.tarea);
     this.loadFormValues();
   }
 
@@ -89,4 +89,10 @@ export class TareaDetallesComponent implements OnInit {
     return "VeryHigh";
   }
 
+  getFecha(): Date{
+    if(!!this.tarea){
+      return this.tarea.fechaLimite;
+    }
+    return new Date();
+  }
 }

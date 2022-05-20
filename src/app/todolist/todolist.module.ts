@@ -21,7 +21,6 @@ import { NuevaTareaComponent } from './nueva-tarea/nueva-tarea.component';
 import { TableroComponent } from './tablero/tablero.component';
 import { TablerosComponent } from './tableros/tableros.component';
 import { TareaCardComponent } from './tarea-card/tarea-card.component';
-import { TajetaPrioridadComponent } from './tarea-detalles/tajeta-prioridad/tajeta-prioridad.component';
 import { TareaDetallesComponent } from './tarea-detalles/tarea-detalles.component';
 import { TodolistComponent } from './todolist/todolist.component';
 
@@ -33,8 +32,7 @@ import { TodolistComponent } from './todolist/todolist.component';
     TablerosComponent,
     TableroComponent,
     TareaCardComponent,
-    TareaDetallesComponent,
-    TajetaPrioridadComponent
+    TareaDetallesComponent
   ],
   imports: [
     CommonModule,
