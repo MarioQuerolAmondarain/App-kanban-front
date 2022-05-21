@@ -40,7 +40,6 @@ export class TareaDetallesComponent implements OnInit {
 
   ngOnInit(): void {
     this.tarea = this.data.tarea;
-    console.log(this.tarea);
     this.loadFormValues();
   }
 
@@ -53,7 +52,9 @@ export class TareaDetallesComponent implements OnInit {
       estado: this.editarTareaForm.get('estado')?.value,
       prioridad: this.editarTareaForm.get('prioridad')?.value,
     } as Tarea;
+
     this.todolistService.updateTarea(tareaActualizada);
+
     this.snackBar.open('¡Tarea modificada!', '', {
       duration: 2000,
     });
@@ -94,5 +95,12 @@ export class TareaDetallesComponent implements OnInit {
       return this.tarea.fechaLimite;
     }
     return new Date();
+  }
+  borrarTarea(){
+    this.todolistService.deleteTarea(this.tarea);
+
+    this.snackBar.open('¡Tarea borrada!', '', {
+      duration: 2000,
+    });
   }
 }

@@ -46,4 +46,10 @@ export class TodolistService {
       return formatDate(tarea.fechaLimite, 'dd-MM-yyyy', 'en') === formatDate(date, 'dd-MM-yyyy', 'en')  && tarea.estado === estado;;
     });
   }
+
+  deleteTarea(tareaRef: Tarea){
+    this.tareas.splice(this.tareas.findIndex((tarea) => {
+      return tarea.id === tareaRef.id
+    }), 1);
+  }
 }

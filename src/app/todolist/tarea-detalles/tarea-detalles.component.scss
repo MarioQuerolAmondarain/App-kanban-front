@@ -7,3 +7,8 @@ form{
 .full-width {
   width: 100%;
 }
+.botonesDialog{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row
+}
