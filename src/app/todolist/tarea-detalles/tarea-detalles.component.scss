@@ -12,3 +12,11 @@ form{
   justify-content: space-between;
   flex-direction: row
 }
+.menuConfirmacion{
+  display: flex;
+  flex-direction: column;
+}
+.botonBorrarMenu{
+  color: red;
+  font-weight: 400;
+}

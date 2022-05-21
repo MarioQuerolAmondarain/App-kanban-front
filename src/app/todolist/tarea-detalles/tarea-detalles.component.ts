@@ -99,7 +99,7 @@ export class TareaDetallesComponent implements OnInit {
   borrarTarea(){
     this.todolistService.deleteTarea(this.tarea);
 
-    this.snackBar.open('¡Tarea borrada!', '', {
+    this.snackBar.open('¡Tarea borrada!', '😐', {
       duration: 2000,
     });
   }

@@ -41,8 +41,9 @@ export class NuevaTareaComponent implements OnInit {
       this.nuevaTareaForm.get('prioridad')?.value,
     );
     this.todolistService.addTarea(nuevaTarea);
-    this.snackBar.open("¡Tarea creada!", "", {
-      duration: 2000
+    this.snackBar.open("¡Tarea creada!", "😎", {
+      duration: 2000,
+      horizontalPosition: 'center'
     });
   }
   initForm(){
