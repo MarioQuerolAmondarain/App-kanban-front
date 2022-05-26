@@ -10,23 +10,32 @@ import { formatDate } from '@angular/common';
 })
 export class TodolistService {
   tareas: Tarea[] = [
-    new Tarea("Hacer calendario", "Diseñar estructura para el calendario", new Date(), EstadoTareas.TODO, PrioridadTareas.MEDIUM)
   ];
 
-  constructor() { }
+  constructor() {
+    this.tareas = this.getTareas();
+  }
 
   addTarea(nuevaTarea: Tarea){
     this.tareas.push(nuevaTarea);
+    localStorage.setItem("tareas", JSON.stringify(this.tareas));
   }
 
   updateTarea(tareaActualizada: Tarea){
     this.tareas[this.tareas.findIndex(tarea => {
       return tarea.id === tareaActualizada.id
     })] = tareaActualizada;
+    localStorage.setItem("tareas", JSON.stringify(this.tareas));
   }
 
   getTareas(): Tarea[]{
-    return this.tareas;
+    let tareas = localStorage.getItem("tareas");
+
+    if(!tareas){
+      return [];
+    }
+
+    return JSON.parse(tareas) as Tarea[];
   }
 
   getTareasPorEstado(estado :EstadoTareas): Tarea[]{
@@ -51,5 +60,6 @@ export class TodolistService {
     this.tareas.splice(this.tareas.findIndex((tarea) => {
       return tarea.id === tareaRef.id
     }), 1);
+    localStorage.setItem("tareas", JSON.stringify(this.tareas));
   }
 }
