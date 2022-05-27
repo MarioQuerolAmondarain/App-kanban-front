@@ -17,12 +17,7 @@ export class Tarea{
     this.titulo = titulo;
     this.descripcion = descripcion;
     this.fechaLimite = fechaLimite;
-    // this.fechaLimite = this.formatoFecha(fechaLimite);
     this.estado = estado;
     this.prioridad = prioridad;
-  }
-
-  private formatoFecha(fecha: Date){
-    return formatDate(fecha, 'dd-MM-yyyy', 'en');
   }
 }
