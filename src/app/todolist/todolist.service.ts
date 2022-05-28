@@ -6,7 +6,7 @@ import { Tarea } from './models/tarea.model';
 import { Injectable } from '@angular/core';
 import { formatDate } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,10 @@ export class TodolistService {
   }
 
   addTarea(nuevaTarea: Tarea){
-    this.tareas.push(nuevaTarea);
+    // this.tareas.push(nuevaTarea);
+    this.http.post(`${HTTPRoutes.ADD_TAREA}`, JSON.stringify(nuevaTarea)).subscribe(tarea => {
+      this.tareas.push(tarea as Tarea);
+    })
   }
 
   updateTarea(tareaActualizada: Tarea){
@@ -33,9 +36,9 @@ export class TodolistService {
 
   getTareas(): Observable<Tarea[]>{
     return this.http.get(HTTPRoutes.LISTAR_TAREAS).pipe(map((res) => {
-      const categories = res as Tarea[];
-      return categories?.map(c => new Tarea(c.titulo, c.descripcion, c.fechaLimite, c.estado, c.prioridad));
-    }));;
+      const tareas = res as Tarea[];
+      return tareas?.map(c => new Tarea(c.titulo, c.descripcion, c.fechaLimite, c.estado, c.prioridad));
+    }));
   }
 
   getTareasPorEstado(estado :EstadoTareas): Tarea[]{
