@@ -90,12 +90,6 @@ export class TareaDetallesComponent implements OnInit {
     return PrioridadTareas.VERYHIGH + " - VeryHigh";
   }
 
-  getFecha(): Date{
-    if(!!this.tarea){
-      return this.tarea.fechaLimite;
-    }
-    return new Date();
-  }
   borrarTarea(){
     this.todolistService.deleteTarea(this.tarea);
 

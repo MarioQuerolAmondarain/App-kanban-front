@@ -10,9 +10,10 @@
     <mat-error>Campo obligatorio</mat-error>
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <mat-label>Fecha límite</mat-label>
-    <input matInput type="date" formControlName="fechaLimite">
-    <mat-error>Campo obligatorio</mat-error>
+    <mat-label>Fecha Limite</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="fechaLimite">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker disabled="false"></mat-datepicker>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Estado</mat-label>
