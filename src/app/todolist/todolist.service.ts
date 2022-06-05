@@ -6,25 +6,23 @@ import { Tarea } from './models/tarea.model';
 import { Injectable } from '@angular/core';
 import { formatDate } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, Observable } from 'rxjs';
+import { catchError, map, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodolistService {
-
+  tareaAdded: Subject<boolean>;
   tareas: Tarea[] = [];
 
   constructor(private http: HttpClient) {
-    this.getTareas().subscribe(tareas => {
-      this.tareas = tareas;
-    })
+    this.tareaAdded = new Subject<boolean>();
   }
 
   addTarea(nuevaTarea: Tarea){
-    // this.tareas.push(nuevaTarea);
     this.http.post(`${HTTPRoutes.ADD_TAREA}`, JSON.stringify(nuevaTarea), { headers: new HttpHeaders({'Content-Type': 'application/json'})}).subscribe(tarea => {
       this.tareas.push(tarea as Tarea);
+      this.tareaAdded.next(true);
     })
   }
 

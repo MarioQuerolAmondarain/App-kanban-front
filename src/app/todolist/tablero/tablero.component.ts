@@ -16,25 +16,33 @@ export class TableroComponent implements OnInit {
   constructor(public todolistService: TodolistService) { }
 
   ngOnInit(): void {
-    this.todolistService.getTareasPorEstado(this.estadoTareas).subscribe(tareas => {
-      this.tareas = tareas;
+    this.obtenerTareas();
+
+    this.todolistService.tareaAdded.subscribe(tareaAdded => {
+      if(tareaAdded){
+        this.obtenerTareas();
+      }
     })
   }
 
   filtrarTareas(){
-    // let tareasFiltradas = this.todolistService.getTareasPorEstado(this.estadoTareas);
-    let tareasFiltradas = this.tareas;
-
     if(this.ascendente){
-      return tareasFiltradas.sort(function(a, b) {
+      return this.tareas.sort(function(a, b) {
         return a.prioridad - b.prioridad;
       });
     }
 
-    return tareasFiltradas.sort(function(a, b) {
+    return this.tareas.sort(function(a, b) {
       return b.prioridad - a.prioridad;
     });
   }
+
+  obtenerTareas(): void{
+    this.todolistService.getTareasPorEstado(this.estadoTareas).subscribe(tareas => {
+      this.tareas = tareas;
+    });
+  }
+
   getTitulo(): string{
     if(this.estadoTareas === EstadoTareas.TODO){
       return "To Do";
