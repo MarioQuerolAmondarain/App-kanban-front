@@ -1,0 +1,8 @@
+<div class="container">
+  <span class="titulo">Todas las tareas</span>
+  <div  class="tareasContainer">
+    <div *ngFor="let tarea of tareas" class="tarea">
+      <app-tarea-card [tarea]="tarea"></app-tarea-card>
+    </div>
+  </div>
+</div>

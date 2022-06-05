@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class SidenavComponent implements OnInit {
   todolist: string = "/todolist";
   calendario: string = "/calendario";
-
+  tareas: string = "/todas-tareas"
   constructor() { }
 
   ngOnInit(): void {

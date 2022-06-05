@@ -23,6 +23,7 @@ import { TablerosComponent } from './tableros/tableros.component';
 import { TareaCardComponent } from './tarea-card/tarea-card.component';
 import { TareaDetallesComponent } from './tarea-detalles/tarea-detalles.component';
 import { TodolistComponent } from './todolist/todolist.component';
+import { TodasTareasComponent } from './todas-tareas/todas-tareas.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { TodolistComponent } from './todolist/todolist.component';
     TablerosComponent,
     TableroComponent,
     TareaCardComponent,
-    TareaDetallesComponent
+    TareaDetallesComponent,
+    TodasTareasComponent
   ],
   imports: [
     CommonModule,
