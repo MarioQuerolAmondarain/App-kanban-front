@@ -34,6 +34,7 @@ export class NuevaTareaComponent implements OnInit {
 
   crearTarea() {
     let nuevaTarea = new Tarea(
+      0,
       this.nuevaTareaForm.get('titulo')?.value,
       this.nuevaTareaForm.get('descripcion')?.value,
       this.nuevaTareaForm.get('fechaLimite')?.value,
