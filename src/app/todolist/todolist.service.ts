@@ -5,7 +5,7 @@ import { EstadoTareas } from './models/estadoTareas.enum';
 import { Tarea } from './models/tarea.model';
 import { Injectable } from '@angular/core';
 import { formatDate } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, Observable } from 'rxjs';
 
 @Injectable({
@@ -23,7 +23,7 @@ export class TodolistService {
 
   addTarea(nuevaTarea: Tarea){
     // this.tareas.push(nuevaTarea);
-    this.http.post(`${HTTPRoutes.ADD_TAREA}`, JSON.stringify(nuevaTarea)).subscribe(tarea => {
+    this.http.post(`${HTTPRoutes.ADD_TAREA}`, JSON.stringify(nuevaTarea), { headers: new HttpHeaders({'Content-Type': 'application/json'})}).subscribe(tarea => {
       this.tareas.push(tarea as Tarea);
     })
   }
