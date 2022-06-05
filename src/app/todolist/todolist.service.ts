@@ -37,14 +37,15 @@ export class TodolistService {
   getTareas(): Observable<Tarea[]>{
     return this.http.get(HTTPRoutes.LISTAR_TAREAS).pipe(map((res) => {
       const tareas = res as Tarea[];
-      return tareas?.map(c => new Tarea(c.titulo, c.descripcion, c.fechaLimite, c.estado, c.prioridad));
+      return tareas?.map(c => new Tarea(c.id, c.titulo, c.descripcion, c.fechaLimite, c.estado, this.castPrioridad(c.prioridad)));
     }));
   }
 
-  getTareasPorEstado(estado :EstadoTareas): Tarea[]{
-    return this.tareas.filter((tarea) => {
-      return tarea.estado === estado;
-    });
+  getTareasPorEstado(estado :EstadoTareas): Observable<Tarea[]>{
+    return this.http.get(HTTPRoutes.LISTAR_TAREAS_POR_ESTADO + "?estado=" + estado).pipe(map((res) => {
+      const tareas = res as Tarea[];
+      return tareas?.map(c => new Tarea(c.id, c.titulo, c.descripcion, c.fechaLimite, c.estado, this.castPrioridad(c.prioridad)));
+    }));
   }
 
   getTareasPorFecha(date: Date){
@@ -63,5 +64,22 @@ export class TodolistService {
     this.tareas.splice(this.tareas.findIndex((tarea) => {
       return tarea.id === tareaRef.id
     }), 1);
+  }
+
+  private castPrioridad(prioridad: any): PrioridadTareas{
+    if(prioridad == "SOMEDAY"){
+      return PrioridadTareas.SOMEDAY;
+    }
+    if(prioridad == "LOW"){
+      return PrioridadTareas.LOW;
+    }
+    if(prioridad == "MEDIUM"){
+      return PrioridadTareas.MEDIUM;
+    }
+    if(prioridad == "HIGH"){
+      return PrioridadTareas.HIGH;
+    }
+
+    return PrioridadTareas.VERYHIGH;
   }
 }

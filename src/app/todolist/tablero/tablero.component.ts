@@ -1,6 +1,7 @@
 import { TodolistService } from './../todolist.service';
 import { EstadoTareas } from './../models/estadoTareas.enum';
 import { Component, Input, OnInit } from '@angular/core';
+import { Tarea } from '../models/tarea.model';
 
 @Component({
   selector: 'app-tablero',
@@ -10,13 +11,19 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TableroComponent implements OnInit {
   @Input() estadoTareas!: EstadoTareas;
   ascendente: boolean = true;
+  tareas: Tarea[] = [];
+
   constructor(public todolistService: TodolistService) { }
 
   ngOnInit(): void {
+    this.todolistService.getTareasPorEstado(this.estadoTareas).subscribe(tareas => {
+      this.tareas = tareas;
+    })
   }
 
   filtrarTareas(){
-    let tareasFiltradas = this.todolistService.getTareasPorEstado(this.estadoTareas);
+    // let tareasFiltradas = this.todolistService.getTareasPorEstado(this.estadoTareas);
+    let tareasFiltradas = this.tareas;
 
     if(this.ascendente){
       return tareasFiltradas.sort(function(a, b) {
