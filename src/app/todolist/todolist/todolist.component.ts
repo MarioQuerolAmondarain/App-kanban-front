@@ -9,12 +9,8 @@ import { Tarea } from '../models/tarea.model';
 })
 export class TodolistComponent implements OnInit {
   panelOpenState=false;
-  tareas!: Tarea[];
 
   constructor(public todolistService: TodolistService) {
-    this.todolistService.getTareas().subscribe(tareas => {
-      this.tareas = tareas;
-    })
   }
 
   ngOnInit(): void {
