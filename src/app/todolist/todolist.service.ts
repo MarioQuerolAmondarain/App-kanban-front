@@ -94,7 +94,7 @@ export class TodolistService {
   }
 
   deleteTarea(tareaRef: Tarea) {
-    return this.http.delete(HTTPRoutes.ELIMINAR_TAREA + "?id=" + tareaRef.id).subscribe(() => {
+    return this.http.delete(HTTPRoutes.ELIMINAR_TAREA + "?id=" + tareaRef.id).subscribe((tarea) => {
       this.tareaAdded.next(true);
     });
   }
