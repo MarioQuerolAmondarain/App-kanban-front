@@ -94,12 +94,9 @@ export class TodolistService {
   }
 
   deleteTarea(tareaRef: Tarea) {
-    this.tareas.splice(
-      this.tareas.findIndex((tarea) => {
-        return tarea.id === tareaRef.id;
-      }),
-      1
-    );
+    return this.http.delete(HTTPRoutes.ELIMINAR_TAREA + "?id=" + tareaRef.id).subscribe(() => {
+      this.tareaAdded.next(true);
+    });
   }
 
   private castPrioridad(prioridad: any): PrioridadTareas {
