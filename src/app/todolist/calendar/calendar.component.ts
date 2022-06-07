@@ -15,9 +15,12 @@ export class CalendarComponent implements OnInit {
   tareasDoing: Tarea[] = [];
   tareasDone: Tarea[] = [];
   constructor(private todolistService: TodolistService) {
-    this.subscribeTareasToDo();
-    this.subscribeTareasDoing();
-    this.subscribeTareasDone();
+    this.buscarTareas();
+    this.todolistService.tareaAdded.subscribe(tareaAdded => {
+      if(tareaAdded){
+        this.buscarTareas();
+      }
+    })
   }
 
   ngOnInit(): void {
@@ -40,5 +43,11 @@ export class CalendarComponent implements OnInit {
 
   getFecha(): string{
     return formatDate(this.selected, 'dd-MM-yyyy', 'en')
+  }
+
+  buscarTareas(){
+    this.subscribeTareasToDo();
+    this.subscribeTareasDoing();
+    this.subscribeTareasDone();
   }
 }

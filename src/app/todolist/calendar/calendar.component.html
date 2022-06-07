@@ -1,6 +1,6 @@
 <div class="container">
   <mat-card class="demo-inline-calendar-card" style="width: 300px;">
-    <mat-calendar [(selected)]="selected"></mat-calendar>
+    <mat-calendar [(selected)]="selected" (selectedChange)="buscarTareas()"></mat-calendar>
   </mat-card>
   <div class="columnaTareas">
     <span class="titulo">Tareas el {{ getFecha() }}</span>
