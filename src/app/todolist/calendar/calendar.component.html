@@ -6,15 +6,15 @@
     <span class="titulo">Tareas el {{ getFecha() }}</span>
     <div class="tareaContainer">
       <span class="subtitulo">Todo</span>
-      <div *ngFor="let tarea of getTareasToDo()">
+      <div *ngFor="let tarea of tareasTodo">
         <app-tarea-card [tarea]="tarea"></app-tarea-card>
       </div>
       <span class="subtitulo">Doing</span>
-      <div *ngFor="let tarea of getTareasDoing()">
+      <div *ngFor="let tarea of tareasDoing">
         <app-tarea-card [tarea]="tarea"></app-tarea-card>
       </div>
       <span class="subtitulo">Done</span>
-      <div *ngFor="let tarea of getTareasDone()">
+      <div *ngFor="let tarea of tareasDone">
         <app-tarea-card [tarea]="tarea"></app-tarea-card>
       </div>
     </div>

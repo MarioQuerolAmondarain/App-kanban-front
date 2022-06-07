@@ -11,19 +11,33 @@ import { TodolistService } from './../todolist.service';
 })
 export class CalendarComponent implements OnInit {
   selected: Date = new Date();
-  constructor(private todolistService: TodolistService) { }
+  tareasTodo: Tarea[] = [];
+  tareasDoing: Tarea[] = [];
+  tareasDone: Tarea[] = [];
+  constructor(private todolistService: TodolistService) {
+    this.subscribeTareasToDo();
+    this.subscribeTareasDoing();
+    this.subscribeTareasDone();
+  }
 
   ngOnInit(): void {
   }
-  getTareasToDo(){
-    return this.todolistService.getTareasPorFechaYEstado(this.selected, EstadoTareas.TODO);
+  subscribeTareasToDo(){
+    this.todolistService.getTareasPorFechaYEstado(this.selected, EstadoTareas.TODO).subscribe(tareasTodo => {
+      this.tareasTodo = tareasTodo;
+    });
   }
-  getTareasDoing(){
-    return this.todolistService.getTareasPorFechaYEstado(this.selected, EstadoTareas.DOING);
+  subscribeTareasDoing(){
+    return this.todolistService.getTareasPorFechaYEstado(this.selected, EstadoTareas.DOING).subscribe(tareasDoing => {
+      this.tareasDoing = tareasDoing;
+    });
   }
-  getTareasDone(){
-    return this.todolistService.getTareasPorFechaYEstado(this.selected, EstadoTareas.DONE);
+  subscribeTareasDone(){
+    return this.todolistService.getTareasPorFechaYEstado(this.selected, EstadoTareas.DONE).subscribe(tareasDone => {
+      this.tareasDone = tareasDone;
+    });
   }
+
   getFecha(): string{
     return formatDate(this.selected, 'dd-MM-yyyy', 'en')
   }

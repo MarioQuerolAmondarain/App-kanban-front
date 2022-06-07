@@ -84,13 +84,27 @@ export class TodolistService {
     });
   }
 
-  getTareasPorFechaYEstado(date: Date, estado: EstadoTareas) {
-    return this.tareas.filter((tarea) => {
-      return (
-        formatDate(tarea.fechaLimite, 'dd-MM-yyyy', 'en') ===
-          formatDate(date, 'dd-MM-yyyy', 'en') && tarea.estado === estado
-      );
+  getTareasPorFechaYEstado(date: Date, estado: EstadoTareas): Observable<Tarea[]> {
+    let fechaEstado = JSON.stringify({
+      fecha: date,
+      estado: estado
     });
+    return this.http.post(HTTPRoutes.LISTAR_TAREAS_POR_FECHA_Y_ESTADO, fechaEstado, this.header).pipe(
+      map((res) => {
+        const tareas = res as Tarea[];
+        return tareas?.map(
+          (c) =>
+            new Tarea(
+              c.id,
+              c.titulo,
+              c.descripcion,
+              c.fechaLimite as Date,
+              c.estado,
+              this.castPrioridad(c.prioridad)
+            )
+        );
+      })
+    );
   }
 
   deleteTarea(tareaRef: Tarea) {
