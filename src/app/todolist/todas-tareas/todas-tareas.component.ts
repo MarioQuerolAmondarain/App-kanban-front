@@ -14,11 +14,11 @@ export class TodasTareasComponent implements OnInit {
   ngOnInit(): void {
     this.getTareas();
 
-    // this.todolistService.tareaAdded.subscribe(tareaAdded => {
-    //   if(tareaAdded){
-    //     this.getTareas();
-    //   }
-    // })
+    this.todolistService.tareaAdded.subscribe(tareaAdded => {
+      if(tareaAdded){
+        this.getTareas();
+      }
+    })
   }
 
   getTareas(): void{
